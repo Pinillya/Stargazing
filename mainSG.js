@@ -46,8 +46,8 @@ var player;
 var sceneSize;
 function makeAMesh () {
 
-	player = new MakePlane('player.png', 10, 10, 10, 5, 0, -20 * Math.PI / 180);
-	var plane = new MakePlane('earth.png', 50, 50, 10, 0, 0, -90 * Math.PI / 180);
+	player = new Player('player.png', 10, 10, 10, 30, 0, -20 * Math.PI / 180);
+	var ground = new StaticCircle('earth.png', 50, 50, 0, 0, -90 * Math.PI / 180);
 }
 
 function makeLight () {

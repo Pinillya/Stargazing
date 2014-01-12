@@ -3,10 +3,25 @@ function draw ()
 {
 	requestAnimationFrame(draw);
 	keyHandeling();
-	rotationAndPlayer();
 	partikles();
 
 	renderer.render( scene, camera );
+
+	//Move player and camera
+	if (player)
+	{
+		player.movePlayer();
+	}
+/*
+	if (moveZ)
+	{
+		camera.position.z += movementZ;
+	}
+	if (moveX)
+	{
+		camera.position.x += movementX;	
+	}*/
+
 }
 
 function partikles () 
@@ -21,33 +36,44 @@ function partikles ()
 
 }
 
-function rotationAndPlayer () 
-{
-/*
-	if (player.position.y <= 5) 
-	{
-		player.position.y = 5;
-	}
-	else
-	{
-		player.position.y -= 0.2;
-	}
-*/
-}
-
+//Globale movement variables
+var moveX = false;
+var moveZ = false;
+var movementX = 0;
+var movementZ = 0;
 function keyHandeling () 
 {
+	//X side
+	var walkSpeed = 0.4;
 	if (Key.isDown(Key.A))
 	{
+		moveX = true;
+		movementX = -walkSpeed;
 	}
 	else if (Key.isDown(Key.D))
 	{
+		moveX = true;
+		movementX = walkSpeed;
+	}
+	else 
+	{
+		moveX = false;
 	}
 
+	//Z side
 	if (Key.isDown(Key.W))
 	{
+		moveZ = true;
+		movementZ = -walkSpeed;
 	}
 	else if (Key.isDown(Key.S))
 	{
+		moveZ = true;
+		movementZ = walkSpeed;
+	}
+	else 
+	{
+		moveZ = false;
 	}
 }
+
