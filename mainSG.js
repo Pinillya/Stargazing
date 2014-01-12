@@ -44,10 +44,30 @@ function createScene ()
 
 var player;
 var sceneSize;
+var boudingBoxes = [];
+var trees = [];
 function makeAMesh () {
 
 	player = new Player('player.png', 10, 10, 10, 30, 0, -20 * Math.PI / 180);
 	var ground = new StaticCircle('earth.png', sceneSize, sceneSize, 0, 0, -90 * Math.PI / 180);
+
+	var tempTreePosX = new THREE.Vector3(0, 0, 0); 
+	var tempTreePosZ = new THREE.Vector3(0, 0, 0);
+	var treeAmount = 50;
+	for (var i=0; i < treeAmount; i++) 
+	{
+		tempTreePosX = -sceneSize + THREE.Math.random16() * sceneSize*2;
+		tempTreePosZ = -sceneSize + THREE.Math.random16() * sceneSize*2;
+
+		if (i>treeAmount/7)
+		{
+			trees[i] = new Trees('tree.png', 10, 10, 1, tempTreePosZ, tempTreePosX, -20 * Math.PI / 180);
+		}
+		else
+		{
+			trees[i] = new Trees('flower.png', 10, 10, 1, tempTreePosZ, tempTreePosX, -20 * Math.PI / 180);
+		}
+	};
 }
 
 function makeLight () {
