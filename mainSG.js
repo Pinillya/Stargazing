@@ -8,8 +8,8 @@ var renderer, scene, camera, pointLight, spotLight;
 
 function createScene () 
 {
-	var WIDTH = 640,
-	HEIGHT = 360;
+	var WIDTH = 800,
+	HEIGHT = 450;
 
 	var VIEW_ANGLE = 50,
 	  ASPECT = WIDTH / HEIGHT,
@@ -47,7 +47,7 @@ var sceneSize;
 function makeAMesh () {
 
 	player = new Player('player.png', 10, 10, 10, 30, 0, -20 * Math.PI / 180);
-	var ground = new StaticCircle('earth.png', 50, 50, 0, 0, -90 * Math.PI / 180);
+	var ground = new StaticCircle('earth.png', sceneSize, sceneSize, 0, 0, -90 * Math.PI / 180);
 }
 
 function makeLight () {

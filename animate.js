@@ -12,16 +12,6 @@ function draw ()
 	{
 		player.movePlayer();
 	}
-/*
-	if (moveZ)
-	{
-		camera.position.z += movementZ;
-	}
-	if (moveX)
-	{
-		camera.position.x += movementX;	
-	}*/
-
 }
 
 function partikles () 

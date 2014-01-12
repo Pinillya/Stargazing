@@ -1,6 +1,6 @@
 function Player (texture, hight, pWith, quality, positionY, positionX, rotate) 
 {
-	var plane;// texture, hight, pWith, quality, positionY, positionX;
+	var plane;
 	///Make a plane Object
 	var playerMaterial = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture(texture), transparent: true});
 
@@ -22,6 +22,19 @@ function Player (texture, hight, pWith, quality, positionY, positionX, rotate)
 Player.prototype.movePlayer = function()
 {
 	var grounded = false;
+	var playerPos = new THREE.Vector3( this.plane.position.x, this.plane.position.y, this.plane.position.z); 
+	var center = new THREE.Vector3(0, 0, 0); 	
+
+	if (playerPos.distanceTo(center) < sceneSize) 
+	{
+		grounded = true;
+	}
+	else
+	{
+		this.plane.position.y -= 0.2;
+		grounded = false;
+	};
+/*
 	if (this.plane.position.y <= 5) 
 	{
 		this.plane.position.y = 5;
@@ -31,7 +44,8 @@ Player.prototype.movePlayer = function()
 	{
 		this.plane.position.y -= 0.2;
 		grounded = false;
-	}	
+	}*/	
+
 	if (moveZ)
 	{
 		this.plane.position.z += movementZ;
@@ -44,6 +58,7 @@ Player.prototype.movePlayer = function()
 	}
 };
 
+var circlePos;
 function StaticCircle (texture, radius, segments, positionY, positionX, rotate) 
 {
 	var circle;
@@ -61,4 +76,16 @@ function StaticCircle (texture, radius, segments, positionY, positionX, rotate)
 	this.circle.position.y = positionY;
 	this.circle.position.x = positionX;
 	this.circle.rotation.x = rotate;
+
+	//circlePos = new THREE.Vector3(this.circle.position.x, this.circle.position.y, this.circle.position.z) 
 }
+
+StaticCircle.prototype.hittingPlayerPlayer = function()
+{
+
+
+	//if (this.circle.position.x + )
+	{
+
+	}
+};
