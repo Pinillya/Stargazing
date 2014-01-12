@@ -34,7 +34,7 @@ function createScene ()
 	sceneSize = 100;
 
 	camera.position.z = 50;
-	camera.position.y = sceneSize + 20;
+	camera.position.y = 30;
 	camera.rotation.x = -20 * Math.PI / 180;
 
 	makeAMesh();
@@ -42,38 +42,12 @@ function createScene ()
 	nextLevel(1);
 }
 
-
-var ball;
 var player;
 var sceneSize;
-//var myObjects = [];
 function makeAMesh () {
 
-	/// Make the Earth!
-	var segments = 30, rings = 30;
-
-	var sphereMaterial = new THREE.MeshLambertMaterial({map: THREE.ImageUtils.loadTexture('earth.png')});
-
-	ball = new THREE.Mesh(new THREE.SphereGeometry(sceneSize, segments, rings), sphereMaterial);
-	//ball = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), sphereMaterial);
-	scene.add(ball);
-	//myObjects.push (ball);
-
-
-	///Make the man
-	var playerHight = 10, playerWith = 10, playerQuality = 10, playerYPos = sceneSize+playerHight/2;
-	var playerMaterial = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture( 'player.png' ), transparent: true});
-
-	player = new THREE.Mesh(
-		new THREE.PlaneGeometry(
-		playerWith,
-		playerHight,
-		playerQuality,
-		playerQuality),
-		playerMaterial);
-
-	scene.add(player);
-	player.position.y = playerYPos + 4;
+	player = new MakePlane('player.png', 10, 10, 10, 5, 0, -20 * Math.PI / 180);
+	var plane = new MakePlane('earth.png', 50, 50, 10, 0, 0, -90 * Math.PI / 180);
 }
 
 function makeLight () {
