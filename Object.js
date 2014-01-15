@@ -154,25 +154,3 @@ function Trees (texture, hight, pWith, quality, positionZ, positionX, rotate)
 		this.plant.position.x = -sceneSize/2 + THREE.Math.random16() * sceneSize;
 	}
 }
-
-var box;
-function HitBoxes (texture, hight, bWith, depth, positionZ, positionX)
-{
-	
-	///Make a boundingBox Object
-	var boxMaterial = new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture(texture), transparent: false});
-
-	this.box = new THREE.Mesh(
-		new THREE.CubeGeometry(
-		hight,
-		bWith,
-		depth),
-		boxMaterial);
-
-	scene.add(this.box);
-
-	this.box.position.z = positionZ;
-	this.box.position.x = positionX;
-	this.box.position.y = hight/2;
-
-}
